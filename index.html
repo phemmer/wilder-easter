@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="wilder-easter">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+    <script src="script.js"></script>
+    <title></title>
+</head>
+<body ng-controller="Controller as ctrl">
+<div>
+    Select your VoxelMap waypoint file to use.
+    <span style="font-size: 0.8em; font-style: italic;">This file can be found in your minecraft folder at <code style="background-color: #ddd;">mods/mamiyaotaru/voxelmap/play.wildercraft.net.points</code>.</span><br />
+    <div style="padding-top: 0.1em;">
+        <input id="file" type="file" onchange="angular.element(this).scope().parseFile()"/>
+        <span ng-show="select_world_options.length > 0">World: <select ng-model="select_world_model" ng-options="opt.id as opt.name for opt in select_world_options" ng-change="ctrl.identifyMissing()"><option id="">None</option></select></span>
+    </div>
+</div>
+<hr />
+<div id="map" style="width: 90%; height: 600px; margin: auto;"></div>
+</body>
+</html>
